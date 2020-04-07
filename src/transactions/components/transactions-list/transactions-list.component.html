@@ -1,0 +1,9 @@
+<div>
+	<input type="text" placeholder="Username" [formControl]="username">
+	<button (click)="loadTransactions()">Load transactions</button>
+	<span *ngIf="isLoading$ | async">Loading transactions...</span>
+	<span *ngIf="error$ | async" style="color: red;">{{error$ | async}}</span>
+	<ul *ngIf="!(isLoading$ | async)">
+		<li *ngFor="let transaction of (transactions$ | async)">{{transaction.id}} - {{transaction.status}}</li>
+	</ul>
+</div>
